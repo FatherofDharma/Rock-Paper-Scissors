@@ -4,16 +4,13 @@ require('pry')
 
 
 class RPS
-  def initialize()
-
-
-
+  def initialize(object)
+    @input = object
+    condition = ["scissors", "rock", "paper"]
+    @argument = condition.sample()
   end
-  def wins?(object, argument)
-    print "Choose rock, paper, or scissors: "
-    @input = (gets.chomp).downcase
-    @object = object
-    @argument = argument
+
+  def wins?()
     win = "#{@input} Wins!"
     lose = "#{@input} Loses!"
     if @input == "rock" && @argument == "scissors"
@@ -38,9 +35,9 @@ class RPS
       puts "It's a tie!"
       false
     end
-
   end
 end
-
-game = RPS.new()
-game.wins?("scissors", "rock")
+print "Choose rock, paper, or scissors: "
+input = gets.chomp
+game = RPS.new(input)
+game.wins?()
